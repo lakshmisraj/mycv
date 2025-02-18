@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .section-title {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .cv-section {
+            margin-bottom: 20px;
+        }
+        .experience-item, .education-item, .publication-item {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lakshmi Shibu Raj</h1>
+    <p>Email: ls6588@nyu.edu | Phone: (123) 456-7890</p>
+
+    <div class="cv-section">
+        <h2 class="section-title">Education</h2>
+        {% for education in education_list %}
+            <div class="education-item">
+                <strong>{{ education.degree }}</strong><br>
+                <em>{{ education.institution }}</em><br>
+                Graduation: {{ education.graduation_year }}<br>
+                {% if education.details %}
+                    <p>{{ education.details }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="cv-section">
+        <h2 class="section-title">Work Experience</h2>
+        {% for job in work_experience %}
+            <div class="experience-item">
+                <strong>{{ job.position }}</strong> at <em>{{ job.company }}</em><br>
+                Duration: {{ job.start_date }} - {{ job.end_date }}<br>
+                {% if job.description %}
+                    <p>{{ job.description }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="cv-section">
+        <h2 class="section-title">Research Work</h2>
+        {% for research in research_work %}
+            <div class="research-item">
+                <strong>{{ research.title }}</strong><br>
+                Published in: {{ research.journal }}<br>
+                Year: {{ research.year }}<br>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="cv-section">
+        <h2 class="section-title">Publications</h2>
+        {% for publication in publications %}
+            <div class="publication-item">
+                <strong>{{ publication.title }}</strong><br>
+                Published in: {{ publication.journal }}<br>
+                Year: {{ publication.year }}<br>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="cv-section">
+        <h2 class="section-title">Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="cv-section">
+        <h2 class="section-title">Certifications</h2>
+        <ul>
+            {% for certification in certifications %}
+                <li>{{ certification }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="cv-section">
+        <h2 class="section-title">Achievements</h2>
+        <ul>
+            {% for achievement in achievements %}
+                <li>{{ achievement }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
